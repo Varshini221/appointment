@@ -33,11 +33,14 @@
             
             <!-- The form tag with method="dialog" automatically closes the popup on submit -->
             <form method="dialog">
-                <label for="name">Category:</label>
+                <label for="name">Name:</label>
                 <input type="text" id="name" required><br><br>
 
                 <label for="event-date">Choose a Date:</label>
                 <input type="date" id="event-date" name="event-date">
+
+                <label for="appt-time">Choose an appointment time:</label>
+                <input type="time" id="appt-time" name="appt-time" required>
 
                 <label for="category">Category:</label>
                 <select id="category" name="category">
@@ -55,7 +58,7 @@
                 </select>
 
                 <!-- Form Action Buttons -->
-                <button type="submit">Submit</button>
+                <button type="button" onclick="submitForm()">Submit</button>
                 <button type="button" onclick="closeForm()" id="close-btn">x</button>
             </form>
         </dialog>
