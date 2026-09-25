@@ -1,6 +1,5 @@
 const dialog = document.getElementById("formDialog");
-const API = "http://localhost:5001";
- 
+const API = "http://127.0.0.1:5001"; 
 // Function to open the pop-up form as a modal
 function openForm() {
   dialog.showModal(); 
@@ -12,13 +11,41 @@ function closeForm() {
 }
 
 async function submitForm() {
-    const serviceName = document.getElementById("name").value.trim();
+    const name = document.getElementById("name").value.trim();
     const date = document.getElementById("event-date").value;
     const category = document.getElementById("category").value;
+    const cost = document.getElementById("cost").value;
+    const time = document.getElementById("appt-time").value;
 
-    if (!serviceName || !date || !category) {
+    if (!name || !date || !category || !cost || !time) {
         alert("please fill in all fields")
         return;
     }
-    const services = await fetch(`${API}/services`).then(r=> r.json()); 
+
+    try {
+      const response = await fetch(`${API}/appointments`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ 
+          name: name, 
+          category: category, 
+          time: time, 
+          cost: cost, 
+          date: date
+        })
+      });
+      if (!response.ok) {
+        throw new Error(`Server returned ${response.status}`);
+      }
+    
+      closeForm()
+      alert("appointment saved");
+      
+
+    } catch (error) {
+      console.error(error);
+      alert("could not save appointmnt" + error.message)
+    }
 }
