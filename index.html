@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BeautyTrack</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>BeautyTrack</h1>
+
+        <nav>
+            <a href="index.html">My Appointments</a>
+            <a href="discover.html">Discover</a>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <section>
+            <h2>My Appointments</h2>
+
+            <button onclick="openForm()" id="add-appointment">+ Add Appointment</button>
+        </section>
+        <dialog id="formDialog">
+            <h2>Whats your appointment</h2>
+            
+            <!-- The form tag with method="dialog" automatically closes the popup on submit -->
+            <form method="dialog">
+                <label for="name">Category:</label>
+                <input type="text" id="name" required><br><br>
+
+                <label for="event-date">Choose a Date:</label>
+                <input type="date" id="event-date" name="event-date">
+
+                <label for="category">Category:</label>
+                <select id="category" name="category">
+                    <option value="">--Please choose a category--</option>
+                    <option value="work">Nails</option>
+                    <option value="personal">Waxing</option>
+                    <option value="finance">Hair Cuts</option>
+                </select>
+                <label for="frequency">Frequency:</label>
+                <select id="frequency" name="frequency">
+                    <option value="once">One-time</option>
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+
+                <!-- Form Action Buttons -->
+                <button type="submit">Submit</button>
+                <button type="button" onclick="closeForm()" id="close-btn">x</button>
+            </form>
+        </dialog>
+
+        <section id="appointments">
+            <h3>Upcoming Appointments</h3>
+
+            <!-- Appointments will be added here with JavaScript -->
+
+        </section>
+
+
+        <section id="past-appointments">
+            <h3>Past Appointments</h3>
+
+            <!-- Past appointments will be added here with JavaScript -->
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>© 2026 BeautyTrack</p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
